@@ -74,3 +74,49 @@ class LinkedList(object):
           self.length += 1
     
     #Deleting from LL
+    def deleteFirstNode(self):
+      if self.length == 0:
+        print("List is empty")
+      else:
+        self.head = self.head.next
+        self.length -= 1
+
+    def deleteLastNode(self):
+      if self.length == 0:
+        print("List is empty")
+      if self.length == 1:
+        self.head = None
+        self.length = 0
+      else:
+        current = self.head
+        count = 1
+        while count < self.length:
+          current = current.next
+          count += 1
+        current.next = None
+        self.length -= 1
+
+  # Delete with Node
+    def deleteIntermediate(self, node ):
+      if self.length == 0:
+        raise ValueError("List is empty")
+      else:
+        current = self.head
+        previous = None
+        found = False
+        while not found:
+          if current == node:
+            found = True
+          elif current == None:
+            raise ValueError("Node not in list?")
+          else:
+            previous = current
+            current = current.next
+      if previous is None:
+        self.head = current.next
+      else:
+        previous = current.next
+      self.length -= 1
+
+  
+        
